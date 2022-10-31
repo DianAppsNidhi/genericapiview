@@ -5,16 +5,29 @@ from rest_framework import status
 from django.http import Http404
 from .models import Course, CourseSerializer
 from rest_framework import mixins, generics
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 
 
-class CourseListView(generics.ListAPIView, generics.CreateAPIView):
+# class CourseListCreateView(generics.ListAPIView, generics.CreateAPIView):
+#     queryset = Course.objects.all()
+#     serializer_class = CourseSerializer
+
+
+
+
+
+# class CourseDetailView(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+#     queryset = Course.objects.all()
+#     serializer_class = CourseSerializer
+
+
+
+
+class CourseListCreateView(ListCreateAPIView):
     queryset = Course.objects.all()
-    serializer_class = CourseSerializer
+    serializer_class = CourseSerializer    
 
 
-
-
-
-class CourseDetailView(generics.RetrieveAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+class CourseDetailView(RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
-    serializer_class = CourseSerializer
+    serializer_class = CourseSerializer   
